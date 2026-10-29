@@ -1,134 +1,79 @@
 # Windows Support & Troubleshooting Lab
 
-## Overview
+## Incident 001 - Network Configuration Verification
 
-This repository documents common Windows support issues and troubleshooting procedures that simulate real-world help desk and desktop support tasks.
+### Problem
 
-The goal of this lab is to demonstrate practical troubleshooting methodology, documentation, problem-solving, and customer support skills.
+Required validation of workstation network configuration.
 
-## Skills Demonstrated
-
-- Windows 10/11 Administration
-- Network Troubleshooting
-- TCP/IP Configuration
-- File Sharing Configuration
-- Command Line Troubleshooting
-- Documentation
-- Root Cause Analysis
-- User Support
-
-## Tools Used
-
-- Windows 11
-- Command Prompt
-- Network and Sharing Center
-- File Explorer
-- ipconfig
-- ping
-- tracert
-- Packet Tracer
-
----
-
-# Incident 001 - Network File Sharing Access Denied
-
-## Problem
-
-A user was unable to access a shared folder on another computer within the home network.
-
-## Symptoms
-
-- Shared folder visible on the network
-- Access prompted for credentials
-- Passwordless sharing enabled
-- Access still denied
-
-## Investigation
-
-1. Verified both devices were on the same network
-2. Confirmed Network Discovery enabled
-3. Confirmed File and Printer Sharing enabled
-4. Reviewed Advanced Sharing Settings
-5. Validated user permissions on shared folder
-
-## Root Cause
-
-Password-protected sharing settings and folder permissions were not configured consistently between devices.
-
-## Resolution
-
-- Disabled password-protected sharing
-- Adjusted share permissions
-- Verified NTFS permissions
-- Re-tested access successfully
-
-## Result
-
-Shared folder became accessible from the second device.
-
----
-
-# Incident 002 - IP Configuration Verification
-
-## Problem
-
-Required verification of network configuration on a Windows workstation.
-
-## Investigation
+### Investigation
 
 Executed:
 
+```cmd
 ipconfig /all
+```
 
-## Findings
+### Findings
 
-- Verified IPv4 address
-- Verified subnet mask
-- Verified default gateway
-- Verified DNS servers
+- DHCP enabled
+- Valid IPv4 address assigned
+- Subnet mask configured correctly
+- Default gateway present
+- DNS servers configured
 
-## Resolution
+### Analysis
+
+The workstation successfully obtained network settings from the DHCP server. No issues were identified with IP addressing or adapter configuration.
+
+### Result
 
 Network configuration validated successfully.
 
-## Result
+---
 
-No configuration issues detected.
+## Incident 002 - Network Connectivity Verification
+
+### Investigation
+
+Executed:
+
+```cmd
+ping 8.8.8.8
+```
+
+### Findings
+
+- Replies received successfully
+- No packet loss observed
+
+### Analysis
+
+Successful responses confirmed IP connectivity to external network resources.
+
+### Result
+
+Internet connectivity verified.
 
 ---
 
-# Incident 003 - Command Prompt Text Visibility Issue
+### Investigation
 
-## Problem
+Executed:
 
-Text entered into Command Prompt was not visible.
+```cmd
+ping google.com
+```
 
-## Symptoms
+### Findings
 
-- Cursor visible
-- Typed commands invisible
+- Hostname resolved successfully
+- Replies received successfully
 
-## Investigation
+### Analysis
 
-Reviewed Command Prompt color settings.
+DNS name resolution and Internet connectivity are functioning correctly.
 
-## Root Cause
+### Result
 
-Foreground text color matched the background color.
-
-## Resolution
-
-Changed text color through Command Prompt properties.
-
-## Result
-
-Command output became visible.
-
----
-
-# Lessons Learned
-
-- Always start with basic connectivity checks.
-- Verify user permissions before investigating advanced solutions.
-- Use command-line tools to validate network settings.
-- Document troubleshooting steps to improve future incident response.
+DNS services verified.
